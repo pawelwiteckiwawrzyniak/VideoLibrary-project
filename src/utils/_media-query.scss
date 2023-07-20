@@ -1,0 +1,17 @@
+$breakpoints: (
+  'phone': 320px,
+  'tablet': 768px,
+  'desktop': 1280px,
+);
+
+@mixin mq($key) {
+  $size: map-get($breakpoints, $key);
+
+  @if ($size) {
+    @media only screen and (min-width: $size) {
+      @content;
+    }
+  } @else {
+    @error '`#{$key}` does not exist in the $breakpoints';
+  }
+}

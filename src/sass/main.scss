@@ -4,4 +4,17 @@
  */
 
 // Style dla pliku z przykładem HTML fragmentu
-@import './example';
+@import '../utils/fonts';
+@import '../utils/vars';
+@import '../utils/media-query';
+
+@import './partials/base';
+
+@import './partials/buttons';
+
+
+@import './partials/header_home';
+@import './partials/header_library';
+@import './partials//section_films';
+@import './partials/footer';
+@import './partials/modal_card_film';
