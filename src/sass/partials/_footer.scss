@@ -1,3 +1,38 @@
-.footer{
-    color: rgb(59, 21, 226);
+.footer {
+  background-color: #f7f7f7;
+  text-align: center;
+  width: 100vw;
+
+  @include mq(phone) {
+    height: 100px;
+    padding-top: 28.71px;
+  }
+  @include mq(tablet) {
+    height: 79px;
+    padding-top: 30px;
+  }
+  @include mq(desktop) {
+    height: 77px;
+    padding-top: 29px;
+  }
+
+  &__items {
+    color: get-color(brand_color-seventh);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    @include mq(phone) {
+      display: flex;
+      justify-content: center;
+    }
+    @include mq(tablet) {
+      display: inline-block;
+    }
+  }
+  //   &__svg {
+  //     width: 14px;
+  //     height: 12.88px;
+  //     color: #ff6b08;
+  //   }
 }
