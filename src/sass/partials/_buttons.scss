@@ -1,0 +1,73 @@
+<<<<<<< Updated upstream
+=======
+.btn {
+  &__main {
+    flex-shrink: 0;
+    background: transparent;
+    border-radius: 5px;
+    border: 1px solid get-color(brand_color-first);
+    color: get-color(brand_color-first);
+    @include mq(phone) {
+      width: 129.532px;
+      height: 44px;
+      margin-right: 19.94px;
+    }
+    @include mq(tablet) {
+      width: 152px;
+      height: 44px;
+      margin-right: 32px;
+    }
+    @include mq(desktop) {
+      width: 147px;
+      height: 42px;
+      margin-right: 16px;
+    }
+    &:focus,
+    &:hover {
+      background: #ff6b01;
+      border: 1px solid #ff6b01;
+      box-shadow: 0px 8px 43px 0px rgba(255, 107, 1, 0.6);
+      cursor: pointer;
+      transform: scale(1.25);
+      transition-duration: 250ms;
+      -webkit-transition-duration: 250ms;
+      //   transition-timing-function: ease-out;
+    }
+  }
+
+  &__modal {
+    flex-shrink: 0;
+    border-radius: 5px;
+    border: 1px solid get-color(brand_color-second);
+    color: get-color(brand_color-second);
+    @include mq(phone) {
+      width: 110px;
+      height: 44px;
+      margin-right: 20px;
+    }
+    @include mq(tablet) {
+      width: 125.032px;
+      height: 44px;
+      margin-right: 14.94px;
+    }
+    @include mq(desktop) {
+      width: 136px;
+      height: 44px;
+      margin-right: 15px;
+    }
+
+    &:focus,
+    &:hover {
+      border-radius: 5px;
+      border: 1px solid #ff6b01;
+      background: #ff6b01;
+      color: get-color(brand_color-first);
+      cursor: pointer;
+      transform: scale(1.25);
+      transition-duration: 250ms;
+      -webkit-transition-duration: 250ms;
+      transition-timing-function: ease-out;
+    }
+  }
+}
+>>>>>>> Stashed changes
