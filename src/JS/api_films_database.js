@@ -3,6 +3,7 @@ const IMG_URL = "https://image.tmdb.org/t/p/w500/"
 const BASE_URL = "https://api.themoviedb.org/3"
 const API_URL = BASE_URL + '/trending/movie/day' + MY_KEY
 const searchURL = BASE_URL + '/search/movie' + MY_KEY
+const GENRE_URL = BASE_URL + '/genre/movie/list' + MY_KEY
 const fetchMovies = async () => {
   
   const response = await fetch(API_URL)
