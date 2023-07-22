@@ -1,20 +1,27 @@
-$fonts: (
-  'primary': 'Montserrat',
-  'secendary': 'Inter',
-);
-$colors: (
-  'brand_color-first': #ffffff,
-  'brand_color-second': #000000,
-  'brand_color-third': #e86f54,
-  'brand_color-fourth': darkgreen,
-  'brand_color-fifth': hotpink,
-  'brand_color-sixth': blue,
-);
-
 @function get-color($key) {
   @return map-get($colors, $key);
 }
 
 @function get-font($key) {
   @return map-get($fonts, $key);
-} ;
+}
+
+$fonts: (
+  'primary': 'Inter',
+  'secondary': 'Roboto',
+);
+
+$fonts-size: (
+  'primary': 12px,
+  'footer': 16px,
+);
+
+$colors: (
+  'brand_color-first': #ffffff,
+  'brand_color-second': #000000,
+  'brand_color-third': #ff6b08,
+  'brand_color-fourth': #ff001b,
+  'brand_color-fifth': #f7f7f7,
+  'brand_color-sixth': #8c8c8c,
+  'brand_color-seventh': #545454,
+);
