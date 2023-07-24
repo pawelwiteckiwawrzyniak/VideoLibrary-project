@@ -6,6 +6,10 @@
   @return map-get($fonts, $key);
 }
 
+@function get-font-size($key) {
+  @return map-get($fonts-size, $key);
+}
+
 $fonts: (
   'primary': 'Inter',
   'secondary': 'Roboto',
