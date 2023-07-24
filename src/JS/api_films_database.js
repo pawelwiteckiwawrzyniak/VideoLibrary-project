@@ -4,9 +4,10 @@ const BASE_URL = "https://api.themoviedb.org/3"
 const API_URL = BASE_URL + '/trending/movie/day' + MY_KEY
 const searchURL = BASE_URL + '/search/movie' + MY_KEY
 const GENRE_URL = BASE_URL + '/genre/movie/list' + MY_KEY
-const fetchMovies = async () => {
-  
-  const response = await fetch(API_URL)
+
+const fetchMovies = async (page = 1) => {
+  const url = `${API_URL}&page=${page}`
+  const response = await fetch(url)
 if (!response.ok) {
   throw new Error('Request failed')
 }
@@ -19,8 +20,8 @@ console.log(data)
 return data
 }
 
-const fetchMoviesByName = async (searchValue) => {
-  const url = `${searchURL}&query=${encodeURIComponent(searchValue)}`
+const fetchMoviesByName = async (searchValue, page = 1) => {
+  const url = `${searchURL}&query=${encodeURIComponent(searchValuex)}&page=${page}`
 
   const response = await fetch(url)
    if (!response.ok) {
