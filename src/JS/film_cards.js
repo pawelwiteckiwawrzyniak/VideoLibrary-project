@@ -4,17 +4,17 @@ function createFilmCards(films) {
       film =>
         `  
         <div class="film-card">
-            <a href=<img src="${IMG_URL}${film.poster_path}" alt="${film.overview}" title="${
-          film.title
-        }" ID="${film.id}" loading="lazy"/></a>
-            <div class="info">
-                <p class="info-item">
+            <a href=<img class="film-card__img" src="${IMG_URL}${film.poster_path}" alt="${
+          film.overview
+        }" title="${film.title}" ID="${film.id}" loading="lazy"/></a>
+            <div class="film-card__info">
+                <p class="film-card__info-item">
                     <b>Title: </b>${film.title}
                 </p>
-                <p class="info-item">
+                <p class="film-card__info-item">
                     <b>Genre: </b>${film.genre}
                 </p>
-                <p class="info-item">
+                <p class="film-card__info-item">
                     <b>Year: </b>${film.release_date.split('-')[0]}
                 </p>
             </div>
@@ -23,4 +23,3 @@ function createFilmCards(films) {
     .join(' ');
   gallery.innerHTML = markupImages;
 }
-//const releaseDate = films.results[0].release_date.toString().slice(0, 4);
