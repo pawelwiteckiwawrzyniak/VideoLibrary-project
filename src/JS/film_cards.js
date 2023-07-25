@@ -4,7 +4,9 @@ function createFilmCards(films) {
       film =>
         `  
         <div class="film-card">
-            <a href=<img src="${IMG_URL}${film.poster_path}" alt="${film.overview}" title="${film.title}" ID="${film.id}" loading="lazy"/></a>
+            <a href=<img src="${IMG_URL}${film.poster_path}" alt="${film.overview}" title="${
+          film.title
+        }" ID="${film.id}" loading="lazy"/></a>
             <div class="info">
                 <p class="info-item">
                     <b>Title: </b>${film.title}
@@ -13,7 +15,7 @@ function createFilmCards(films) {
                     <b>Genre: </b>${film.genre}
                 </p>
                 <p class="info-item">
-                    <b>Year: </b>${film.release_date}
+                    <b>Year: </b>${film.release_date.split('-')[0]}
                 </p>
             </div>
         </div>`,
