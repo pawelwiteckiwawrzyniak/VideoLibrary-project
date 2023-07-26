@@ -1,7 +1,7 @@
 const gallery = document.querySelector('.section-films');
 
 function createFilmCards(films) {
-  const markupImages = films
+  const markupImages = films.results
     .map(
       film => `<div class="film-card">
         <img class="film-card__img" src="${IMG_URL}${film.poster_path}" alt="${
