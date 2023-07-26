@@ -65,7 +65,7 @@
   }
 
   &__title {
-    color: #fff;
+    color: get-color(brand_color-first);
     text-align: center;
     font-size: 30px;
     font-style: normal;
@@ -85,9 +85,9 @@
 
   &__nav-link:link,
   &__nav-link:visited {
-    color: #fff;
+    color: get-color(brand_color-first);
     text-decoration: none;
-    font-size: 12px;
+    font-size: get-font-size(primary);
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.02em;
@@ -97,7 +97,7 @@
   &__nav-link:hover,
   &__nav-link:focus {
     position: relative;
-    color: #fff;
+    color: get-color(brand_color-first);
 
     &::after {
       content: '';
@@ -107,7 +107,7 @@
       top: 15px;
       width: 100%;
       height: 3px;
-      background-color: #ff001b;
+      background-color: get-color(brand_color-fourth);
     }
   }
 
@@ -124,7 +124,7 @@
       top: 20px;
       width: 100%;
       height: 3px;
-      background-color: #ff001b;
+      background-color: get-color(brand_color-fourth);
     }
   }
 
