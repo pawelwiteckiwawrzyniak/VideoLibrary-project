@@ -22,50 +22,47 @@ return data
 
 const fetchMoviesByName = async (searchValue, page = 1) => {
   const url = `${searchURL}&query=${encodeURIComponent(searchValuex)}&page=${page}`
-
-  const response = await fetch(url)
-   if (!response.ok) {
-     throw new Error('Request failed')
-   }
-   console.log(response)
-   const data = await response.json()
-   if (data.length === 0) {
-     throw new Error('No cat data available')
-   }
-   console.log(data)
-   return data
-}
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error('Request failed');
+  }
+  console.log(response);
+  const data = await response.json();
+  if (data.length === 0) {
+    throw new Error('No cat data available');
+  }
+  console.log(data);
+  return data;
+};
 // ---------------------- kategorie filmów --------------------------------------------
 const fetchGenres = async () => {
-    
-
-  const response = await fetch(GENRE_URL)
-if (!response.ok) {
-  throw new Error('Request failed')
-}
-console.log(response)
-const data = await response.json()
-if (data.length === 0) {
-  throw new Error('No movie data available')
-}
-console.log(data)
-return data
-}
+  const response = await fetch(GENRE_URL);
+  if (!response.ok) {
+    throw new Error('Request failed');
+  }
+  console.log(response);
+  const data = await response.json();
+  if (data.length === 0) {
+    throw new Error('No movie data available');
+  }
+  console.log(data);
+  return data;
+};
 // -------------------- szukanie filmów przez id -------------------------------------
-const fetchMoviesByID = async (id) => {
-  const url = BASE_URL + `/movie/${id}` + MY_KEY
+const fetchMoviesByID = async id => {
+  const url = BASE_URL + `/movie/${id}` + MY_KEY;
 
-const response = await fetch(url)
-if (!response.ok) {
-throw new Error('Request failed')
-}
-console.log(response)
-const data = await response.json()
-if (data.length === 0) {
-throw new Error('No movie data available')
-}
-console.log(data)
-return data
-}
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error('Request failed');
+  }
+  console.log(response);
+  const data = await response.json();
+  if (data.length === 0) {
+    throw new Error('No movie data available');
+  }
+  console.log(data);
+  return data;
+};
 
-export {fetchMovies,fetchMoviesByName, fetchGenres, fetchMoviesByID}
+export { fetchMovies, fetchMoviesByName, fetchGenres, fetchMoviesByID };
