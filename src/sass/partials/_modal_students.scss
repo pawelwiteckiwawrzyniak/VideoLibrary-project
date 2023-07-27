@@ -1,0 +1,139 @@
+.mdl__image {
+  display: inline-block;
+  border-radius: 22px 22px 22px 22px;
+  padding: 5px 5px 5px 5px;
+
+  @include mq(phone) {
+    width: 100%;
+    height: 100%;
+  }
+  @include mq(tablet) {
+    width: 100%;
+    height: 100%;
+  }
+  @include mq(desktop) {
+    width: 100%;
+    height: 100%;
+  }
+}
+.mdl__items {
+  font-size: 18px;
+  width: 150px;
+  height: 200px;
+  margin-bottom: 45px;
+  border-radius: 22px 22px 22px 22px;
+  border-color: azure;
+  -webkit-box-shadow: -1px 5px 13px 3px rgba(177, 181, 224, 1);
+  -moz-box-shadow: -1px 5px 13px 3px rgba(177, 181, 224, 1);
+  box-shadow: -1px 5px 13px 3px rgba(177, 181, 224, 1);
+  @include mq(phone) {
+    width: 200px;
+    height: 300px;
+    margin: auto;
+    margin-top: 30px;
+  }
+  @include mq(tablet) {
+    width: 200px;
+    height: 300px;
+    margin-top: 20px;
+    gap: 30px;
+  }
+  @include mq(desktop) {
+    margin: auto;
+    margin-top: 15px;
+  }
+}
+.mdl__items:focus,
+.mdl__items:hover {
+  cursor: pointer;
+  transform: scale(1.25);
+  transition-duration: 250ms;
+  -webkit-transition-duration: 250ms;
+  transition-timing-function: ease-out;
+}
+.mdl__paragraf {
+  text-align: center;
+  font-size: 18px;
+  color: #b8860b;
+}
+.mdl__container {
+  @include mq(phone) {
+    display: flow-root;
+    align-items: center;
+    width: 280px;
+    height: 940px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  @include mq(tablet) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    width: 704px;
+    height: 552px;
+  }
+  @include mq(desktop) {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 15px;
+    width: 806px;
+    height: 558px;
+  }
+}
+// img {
+//   padding-top: 15px;
+//   padding-bottom: 15px;
+// }
+.mdl__title {
+  text-transform: uppercase;
+  letter-spacing: 0.5em;
+  display: inline-block;
+  border: 4px double rgba(255, 255, 255, 0.25);
+  border-width: 4px 0;
+  padding: 1.5em 0em;
+  position: center;
+  top: 18%;
+  left: 50%;
+  width: 20em;
+  margin: auto;
+  text-align: center;
+
+  letter-spacing: 0;
+  padding: 0.25em 0 0.325em;
+  display: block;
+  margin: 0 auto;
+  text-shadow: 0 0 80px rgba(255, 255, 255, 0.5);
+
+  /* Clip Background Image */
+
+  background: url(https://i.ibb.co/RDTnNrT/animated-text-fill.png) repeat-y;
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  /* Animate Background Image */
+
+  -webkit-text-fill-color: transparent;
+  -webkit-animation: aitf 80s linear infinite;
+
+  /* Activate hardware acceleration for smoother animations */
+
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  @include mq(phone) {
+    font: 20 2em/1 'Brush Script MT, Brush Script Std', cursive;
+  }
+  @include mq(tablet) {
+    font: 700 4em/1 'Brush Script MT, Brush Script Std', cursive;
+  }
+}
+
+/* Animate Background Image */
+
+@-webkit-keyframes aitf {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
