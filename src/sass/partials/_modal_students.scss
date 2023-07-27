@@ -16,7 +16,7 @@
     height: 100%;
   }
 }
-.mdl__items {
+&__items {
   font-size: 18px;
   width: 150px;
   height: 200px;
@@ -43,20 +43,20 @@
     margin-top: 15px;
   }
 }
-.mdl__items:focus,
-.mdl__items:hover {
+&__items:focus,
+&__items:hover {
   cursor: pointer;
   transform: scale(1.25);
   transition-duration: 250ms;
   -webkit-transition-duration: 250ms;
   transition-timing-function: ease-out;
 }
-.mdl__paragraf {
+&__paragraf {
   text-align: center;
   font-size: 18px;
   color: #b8860b;
 }
-.mdl__container {
+&__container {
   @include mq(phone) {
     display: flow-root;
     align-items: center;
@@ -80,11 +80,8 @@
     height: 558px;
   }
 }
-// img {
-//   padding-top: 15px;
-//   padding-bottom: 15px;
-// }
-.mdl__title {
+
+&__title {
   text-transform: uppercase;
   letter-spacing: 0.5em;
   display: inline-block;
