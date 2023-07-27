@@ -20,3 +20,4 @@ function createFilmCards(films) {
     .join(' ');
   gallery.innerHTML = markupImages;
 }
+export { createFilmCards };
