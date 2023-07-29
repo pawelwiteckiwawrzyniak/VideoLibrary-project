@@ -1,9 +1,11 @@
-const gallery = document.querySelector('.section-films');
+const gallery = document.querySelector('.section-films__list');
 
 function createFilmCards(films) {
   const markupImages = films.results
     .map(
-      film => `<div class="film-card">
+      film => `
+      <li><a href="" data-id="${film.id}">
+      <div class="film-card">
         <img class="film-card__img" src="${IMG_URL}${film.poster_path}" alt="${
         film.overview
       }" title="${film.title}" ID="${film.id}" loading="lazy"/>
@@ -15,7 +17,9 @@ function createFilmCards(films) {
             ${film.genre} | ${film.release_date.split('-')[0]}
             </p>
         </div>
-    </div>`,
+    </div>
+    </a>
+    </li>`,
     )
     .join(' ');
   gallery.innerHTML = markupImages;
