@@ -17,7 +17,6 @@ const genres = film => {
 };
 
 const createFilmCards = film => {
-  console.log(film.id);
   const markup = `<div class="film-card">
         <img class="film-card__img" src="https://image.tmdb.org/t/p/w500${
           film.poster_path
