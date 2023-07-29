@@ -10,7 +10,7 @@ Notiflix.Notify.init({
 
 showError => Notiflix.Notify.failure('Error has occured. Please try again later');
 
-showInfo => Notify.info('Enojoy you movie!');
+showInfo => Notify.info('Already on the list!');
 
 showSuccess => Notify.success('Successfully added to your collection');
 

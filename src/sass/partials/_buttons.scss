@@ -38,6 +38,7 @@
     border-radius: 5px;
     border: 1px solid get-color(brand_color-second);
     color: get-color(brand_color-second);
+    background: transparent;
     @include mq(phone) {
       width: 110px;
       height: 44px;
