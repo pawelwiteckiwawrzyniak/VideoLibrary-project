@@ -56,7 +56,6 @@ function addToQueue(id) {
   }
   queuedMovies.push(id);
   localStorage.setItem('queuedMovies', JSON.stringify(queuedMovies));
-  console.log(queuedMovies);
 }
 
 /* usuwa id z LocalStorage */
