@@ -1,9 +1,9 @@
 import './info_functions';
 import './api_films_database';
 
-const modal = document.querySelector('[data-modal]');
+/* const modal = document.querySelector('[data-modal]');
 const openModalBtn = document.querySelector('[data-modal-open]');
-const closeModalBtn = document.querySelector('[data-modal-close]');
+const closeModalBtn = document.querySelector('[data-modal-close]'); */
 
 function toggleModal(event) {
   if (event.target === openModalBtn) {
@@ -11,7 +11,11 @@ function toggleModal(event) {
   }
 }
 
+
 //openModalBtn.addEventListener('click', toggleModal);
+
+/* openModalBtn.addEventListener('click', toggleModal); */
+
 
 function closeModal(event) {
   if (event.key === 'Escape') {
@@ -25,8 +29,8 @@ function closeModalClick(event) {
   }
 }
 
-document.addEventListener('keydown', closeModal);
-document.addEventListener('click', closeModalClick);
+/* document.addEventListener('keydown', closeModal);
+document.addEventListener('click', closeModalClick); */
 
 function createModalContent(filmData) {
   const modalContent = `
@@ -75,7 +79,7 @@ function createModalContent(filmData) {
   modalFilmCard.innerHTML = modalContent;
 }
 
-function addToWatched(event) {
+/* function addToWatched(event) {
   if (!getWatchedMovie.includes(movieID)) {
     getWatchedMovie.push(movieID);
     showSuccess;
@@ -94,3 +98,6 @@ function addToQueued(event) {
   }
   addToQueueBtn.addEventListener('click', addToQueued);
 }
+ */
+
+export { toggleModal, closeModal, closeModalClick, createModalContent };
