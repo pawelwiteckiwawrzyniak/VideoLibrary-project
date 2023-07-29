@@ -24,5 +24,7 @@ body {
 }
 
 .hidden {
-  display: none;
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
 }
