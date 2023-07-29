@@ -28,7 +28,7 @@ function getLocalWatched() {
     return;
   }
   const localWatchedMovies = localStorage.getItem('watchedMovies');
-  localStorage.setItem('watchedMovies', localWatchedMovies);
+  watchedMovies = JSON.parse(localWatchedMovies);
 }
 
 /* funkcja potrzebna do pobrania wartości LocalStorage bo inaczej po zamknięciu strony będzie reset */
@@ -37,19 +37,26 @@ function getLocalQueue() {
     return;
   }
   const localQueuedMovies = localStorage.getItem('queuedMovies');
-  localStorage.setItem('queuedMovies', localQueuedMovies);
+  queuedMovies = JSON.parse(localQueuedMovies);
 }
 
 /* dodaje id do "watched" do LocalStorage */
 function addToWatched(id) {
+  if (watchedMovies.includes(id)) {
+    return Notiflix.Notify.info("This film is already on your 'Watched' list!");
+  }
   watchedMovies.push(id);
-  localStorage.setItem('watchedMovies', watchedMovies);
+  localStorage.setItem('watchedMovies', JSON.stringify(watchedMovies));
 }
 
 /* dodaje id do "queue" do LocalStorage */
 function addToQueue(id) {
+  if (queuedMovies.includes(id)) {
+    return Notiflix.Notify.info("This film is already on your 'Queue' list!");
+  }
   queuedMovies.push(id);
-  localStorage.setItem('queuedMovies', queuedMovies);
+  localStorage.setItem('queuedMovies', JSON.stringify(queuedMovies));
+  console.log(queuedMovies);
 }
 
 /* usuwa id z LocalStorage */
@@ -57,10 +64,10 @@ function deleteFromWatched(id) {
   const movieToDelete = watchedMovies.findIndex(value => value == id);
   if (movieToDelete != -1) {
     watchedMovies.splice(movieToDelete, 1);
-    localStorage.setItem('watchedMovies', watchedMovies);
+    localStorage.setItem('watchedMovies', JSON.stringify(watchedMovies));
     return;
   }
-  Notiflix.Notify.failure("Sorry! This movie doesn't exist in your 'Watched' list!");
+  Notiflix.Notify.failure("Sorry! This movie doesn't exist on your 'Watched' list!");
 }
 
 /* usuwa id z LocalStorage */
@@ -68,22 +75,24 @@ function deleteFromQueue(id) {
   const movieToDelete = queuedMovies.findIndex(value => value == id);
   if (movieToDelete != -1) {
     queuedMovies.splice(movieToDelete, 1);
-    localStorage.setItem('queuedMovies', queuedMovies);
+    localStorage.setItem('queuedMovies', JSON.stringify(queuedMovies));
     return;
   }
-  Notiflix.Notify.failure("Sorry! This movie doesn't exist in your 'Queue' list!");
+  Notiflix.Notify.failure("Sorry! This movie doesn't exist on your 'Queue' list!");
 }
 
 /* pobiera id "watched" filmów z LocalStorage */
 function getWatchedMovies() {
   const movies = localStorage.getItem('watchedMovies');
-  return movies;
+  const moviesParsed = JSON.parse(movies);
+  return moviesParsed;
 }
 
 /* pobiera id "queue" filmów z LocalStorage */
 function getQueuedMovies() {
   const movies = localStorage.getItem('queuedMovies');
-  return movies;
+  const moviesParsed = JSON.parse(movies);
+  return moviesParsed;
 }
 
 export {
