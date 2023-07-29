@@ -11,7 +11,11 @@ function toggleModal(event) {
   }
 }
 
+
+//openModalBtn.addEventListener('click', toggleModal);
+
 /* openModalBtn.addEventListener('click', toggleModal); */
+
 
 function closeModal(event) {
   if (event.key === 'Escape') {
