@@ -25,3 +25,5 @@ const showEl = elem => {
 };
 
 //użycie - hide/show(document.querySelector('element'))
+
+export { showError, showInfo, showSuccess, showWarning, hideEl, showEl };
