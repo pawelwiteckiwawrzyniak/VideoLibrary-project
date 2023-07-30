@@ -11,28 +11,28 @@ const fetchMovies = async (page = 1) => {
   if (!response.ok) {
     throw new Error('Request failed');
   }
-  console.log(response);
+  /* console.log(response); */
   const data = await response.json();
   if (data.length === 0) {
     throw new Error('No movie data available');
   }
-  console.log(data);
+  /* console.log(data); */
   return data;
 };
 
 const fetchMoviesByName = async (searchValue, page = 1) => {
-  console.log(searchValue);
+  /* console.log(searchValue); */
   const url = `${searchURL}&query=${encodeURIComponent(searchValue)}&page=${page}`;
   const response = await fetch(url);
   if (!response.ok) {
     throw new Error('Request failed');
   }
-  console.log(response);
+  /* console.log(response); */
   const data = await response.json();
   if (data.length === 0) {
     throw new Error('No cat data available');
   }
-  console.log(data);
+  /* console.log(data); */
   return data;
 };
 // ---------------------- kategorie filmów --------------------------------------------
@@ -41,12 +41,12 @@ const fetchGenres = async () => {
   if (!response.ok) {
     throw new Error('Request failed');
   }
-  console.log(response);
+  /* console.log(response); */
   const data = await response.json();
   if (data.length === 0) {
     throw new Error('No movie data available');
   }
-  console.log(data);
+  /* console.log(data); */
   return data;
 };
 // -------------------- szukanie filmów przez id -------------------------------------
@@ -57,12 +57,12 @@ const fetchMoviesByID = async id => {
   if (!response.ok) {
     throw new Error('Request failed');
   }
-  console.log(response);
+  /* console.log(response); */
   const data = await response.json();
   if (data.length === 0) {
     throw new Error('No movie data available');
   }
-  console.log(data);
+  /* console.log(data); */
   return data;
 };
 

@@ -18,11 +18,59 @@ searchForm.addEventListener('submit', searchFilms);
 cardsFilm.addEventListener('click', openCardFilm);
 //studentsModal.addEventListener('click', openCardFilm);
 /************************************************************************************************************************************************/
+
+const createFilmCards = film => {
+  const markup = `
+  <div class="film-card">
+    <img class="film-card__img" src="https://image.tmdb.org/t/p/w500/${film.poster_path}" alt="${
+    film.overview
+  }" title="${film.title}" ID="${film.id}" loading="lazy"/>
+
+    <div class="film-card__info">
+        <p class="film-card__info--title">
+        ${film.title}
+        </p>
+        <p class="film-card__info--subtitle">
+        ${genres(film)} | ${film.release_date.split('-')[0]}
+        </p>
+    </div>
+</div>
+</a>`;
+  cardsFilm.insertAdjacentHTML('beforeend', markup);
+};
+
+const ids = movies => {
+  const arrOdIds = [];
+  for (const movie of movies) {
+    arrOdIds.push(movie.id);
+  }
+  return arrOdIds;
+};
+
+export const genres = film => {
+  const arrayOfGenres = [];
+  for (const genre of film.genres) {
+    arrayOfGenres.push(genre.name);
+  }
+  return arrayOfGenres.join(', ');
+};
+
 async function searchFilms(eve) {
   eve.preventDefault();
   try {
     const popularFilms = await api.fetchMoviesByName(input.value, 1);
-    filmsCard.createFilmCards(popularFilms);
+    console.log(popularFilms);
+    const movies = popularFilms.results;
+    console.log(movies);
+    cardsFilm.innerHTML = '';
+    ids(movies).map(index => {
+      api
+        .fetchMoviesByID(index)
+        .then(film => {
+          createFilmCards(film);
+        })
+        .catch(error => console.error(error));
+    });
   } catch (error) {
     console.log(error);
   }
@@ -31,7 +79,15 @@ async function searchFilms(eve) {
 async function loadPopularFilms(page) {
   try {
     const popularFilms = await api.fetchMovies(page);
-    filmsCard.createFilmCards(popularFilms);
+    const movies = popularFilms.results;
+    ids(movies).map(index => {
+      api
+        .fetchMoviesByID(index)
+        .then(film => {
+          createFilmCards(film);
+        })
+        .catch(error => console.error(error));
+    });
   } catch (error) {
     console.log(error);
   }
