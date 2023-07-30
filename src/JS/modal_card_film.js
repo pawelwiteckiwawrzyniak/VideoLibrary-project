@@ -12,10 +12,12 @@ let idFilm = null;
 function openModal() {
   functionsProject.showEl(modalFilmCard);
   window.addEventListener('click', widowEvent);
+  window.addEventListener('keydown', keyListener);
 }
 function closeModal() {
   functionsProject.hideEl(modalFilmCard);
   window.removeEventListener('Click', widowEvent);
+  window.removeEventListener('keydown', keyListener);
 }
 function addToWatched() {
   localStorage.addToWatched(idFilm);
@@ -31,6 +33,12 @@ function addToQueued() {
 function widowEvent(eve) {
   console.log(eve.target);
   if (eve.target == modalFilmCard) {
+    closeModal();
+  }
+}
+function keyListener(eve) {
+  console.log('klucz');
+  if (eve.key === 'Escape') {
     closeModal();
   }
 }
