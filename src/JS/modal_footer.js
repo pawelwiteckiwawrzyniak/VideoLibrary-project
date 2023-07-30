@@ -1,21 +1,22 @@
-// Pobierz referencje do przycisku otwierającego okno modalne i do samego okna modalnego
-const openModalBtn = document.getElementById('openModalBtn');
-const studentsModal = document.getElementById('studentsModal');
-
-// Dodaj obsługę kliknięcia do przycisku otwierającego
-openModalBtn.addEventListener('click', function () {
-  studentsModal.style.display = 'block'; // Pokaż okno modalne
-});
-
-// Pobierz referencję do przycisku zamykającego okno modalne
+/************************************************************************************************************************************************/
+const studentsModal = document.querySelector('#studentsModal');
 const closeModalBtn = document.getElementById('closeModalBtn');
-
-// Dodaj obsługę kliknięcia do przycisku zamykającego
-closeModalBtn.addEventListener('click', function () {
-  studentsModal.style.display = 'none'; // Ukryj okno modalne
-});
-window.addEventListener('click', function (event) {
-  if (event.target === studentsModal) {
-    studentsModal.style.display = 'none';
+/************************************************************************************************************************************************/
+studentsModal.addEventListener('click', openModal);
+closeModalBtn.addEventListener('click', closeModal);
+/************************************************************************************************************************************************/
+function openModal() {
+  functionsProject.showEl(modalFilmCard);
+  window.addEventListener('click', widowEvent);
+}
+function closeModal() {
+  functionsProject.hideEl(studentsModal);
+  window.removeEventListener('Click', widowEvent);
+}
+function widowEvent(eve) {
+  console.log(eve.target);
+  if (eve.target === studentsModal) {
+    closeModal();
   }
-});
+}
+/************************************************************************************************************************************************/

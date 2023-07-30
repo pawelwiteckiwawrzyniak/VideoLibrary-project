@@ -3,6 +3,7 @@ import * as functionsProject from './info_functions';
 import * as localStorage from './local_storage';
 
 /************************************************************************************************************************************************/
+
 const modalFilmCard = document.querySelector('.modal-film');
 /************************************************************************************************************************************************/
 let idFilm = null;
@@ -10,6 +11,7 @@ let idFilm = null;
 /************************************************************************************************************************************************/
 function openModal() {
   functionsProject.showEl(modalFilmCard);
+  window.addEventListener('click', widowEvent);
 }
 function closeModal() {
   functionsProject.hideEl(modalFilmCard);
@@ -87,6 +89,5 @@ export function createModalContent(filmData) {
   exitBtn.addEventListener('click', closeModal);
   idFilm = filmData.id;
   openModal();
-  window.addEventListener('click', widowEvent);
 }
 /************************************************************************************************************************************************/
