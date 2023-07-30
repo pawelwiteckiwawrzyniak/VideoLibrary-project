@@ -26,7 +26,6 @@ function widowEvent(eve) {
   }
 }
 function keyListener(eve) {
-  console.log('klucz');
   if (eve.key === 'Escape') {
     closeModal();
   }

@@ -32,7 +32,6 @@ function addToQueued() {
 }
 
 function widowEvent(eve) {
-  console.log(eve.target);
   if (eve.target == modalFilmCard) {
     closeModal();
   }
