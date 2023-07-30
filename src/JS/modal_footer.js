@@ -1,21 +1,33 @@
 /************************************************************************************************************************************************/
-const studentsModal = document.querySelector('#studentsModal');
-const closeModalBtn = document.getElementById('closeModalBtn');
+import * as functionsProject from './info_functions';
 /************************************************************************************************************************************************/
-studentsModal.addEventListener('click', openModal);
+const studentsModal = document.querySelector('#studentsModal');
+const openModalBtn = document.querySelector('#openModalBtn');
+const closeModalBtn = document.getElementById('closeModalBtn');
+
+/************************************************************************************************************************************************/
+openModalBtn.addEventListener('click', openModal);
 closeModalBtn.addEventListener('click', closeModal);
+
 /************************************************************************************************************************************************/
 function openModal() {
-  functionsProject.showEl(modalFilmCard);
+  functionsProject.showEl(studentsModal);
   window.addEventListener('click', widowEvent);
+  window.addEventListener('keydown', keyListener);
 }
 function closeModal() {
   functionsProject.hideEl(studentsModal);
   window.removeEventListener('Click', widowEvent);
+  window.removeEventListener('keydown', keyListener);
 }
 function widowEvent(eve) {
-  console.log(eve.target);
   if (eve.target === studentsModal) {
+    closeModal();
+  }
+}
+function keyListener(eve) {
+  console.log('klucz');
+  if (eve.key === 'Escape') {
     closeModal();
   }
 }
