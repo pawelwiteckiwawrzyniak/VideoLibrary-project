@@ -31,13 +31,11 @@ function addToQueued() {
   //'Dodano Film do  kolejki'
 }
 function widowEvent(eve) {
-  console.log(eve.target);
   if (eve.target == modalFilmCard) {
     closeModal();
   }
 }
 function keyListener(eve) {
-  console.log('klucz');
   if (eve.key === 'Escape') {
     closeModal();
   }
