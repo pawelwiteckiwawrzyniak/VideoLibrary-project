@@ -12,10 +12,12 @@ let idFilm = null;
 function openModal() {
   functionsProject.showEl(modalFilmCard);
   window.addEventListener('click', widowEvent);
+  window.addEventListener('keydown', keyListener);
 }
 function closeModal() {
   functionsProject.hideEl(modalFilmCard);
   window.removeEventListener('Click', widowEvent);
+  window.removeEventListener('keydown', keyListener);
 }
 function addToWatched() {
   localStorage.addToWatched(idFilm);
@@ -30,26 +32,25 @@ function addToQueued() {
 }
 
 function widowEvent(eve) {
-  console.log(eve.target);
   if (eve.target == modalFilmCard) {
     closeModal();
   }
 }
 
-function closeModalEsc(eve) {
+function keyListener(eve) {
   if (eve.key === 'Escape') {
-    modalFilmCard.classList.add('hidden');
+    closeModal();
   }
 }
-document.addEventListener('keydown', closeModalEsc);
-
-window.addEventListener('click', eve => {
-  if (eve.target.classList.contains('backdrop')) {
-    modalFilmCard.classList.add('hidden');
-  }
-});
-
 /************************************************************************************************************************************************/
+export const genres = film => {
+  const arrayOfGenres = [];
+  for (const genre of film.genres) {
+    arrayOfGenres.push(genre.name);
+  }
+  return arrayOfGenres.join(', ');
+};
+
 export function createModalContent(filmData) {
   const modalContent = `
   <div class="modal-film__container modal-film">
@@ -60,7 +61,9 @@ export function createModalContent(filmData) {
       </svg> -->
     </button>
     <div class="modal-film__img-frame">
-      <img class="modal-film__img" src="https://image.tmdb.org/t/p/w500/${filmData.poster_path}" alt="" />
+      <img class="modal-film__img" src="https://image.tmdb.org/t/p/w500/${
+        filmData.poster_path
+      }" alt="" />
     </div>
     <div class="modal-film__card">
       <h2 class="modal-film__title">${filmData.title}</h2>
@@ -79,8 +82,10 @@ export function createModalContent(filmData) {
             <li class="modal-film__rate-content modal-film__wtf-two">${filmData.vote_count}</li>
           </div>
           <li class="modal-film__rate-content">${filmData.popularity}</li>
-          <li class="modal-film__rate-content modal-film__inner-title">${filmData.original_title}</li>
-          <li class="modal-film__rate-content">${filmData.genre}</li>
+          <li class="modal-film__rate-content modal-film__inner-title">${
+            filmData.original_title
+          }</li>
+          <li class="modal-film__rate-content">${genres(filmData)}</li>
         </ul>
       </div>
       <h3 class="modal-film__about">About</h3>
@@ -97,6 +102,8 @@ export function createModalContent(filmData) {
   const addToQueueBtn = document.querySelector('#add__queue-btn');
   const addToWatchedBtn = document.querySelector('#add__watched-btn');
   const exitBtn = document.querySelector('[data-modal-close]');
+
+  localStorage.checkLocalStorage();
 
   addToQueueBtn.addEventListener('click', addToQueued);
   addToWatchedBtn.addEventListener('click', addToWatched);
