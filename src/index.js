@@ -5,7 +5,7 @@ import * as functionsProject from './JS/info_functions';
 import * as modalCardFilm from './JS/modal_card_film';
 import './sass/main.scss';
 
-// /************************************************************************************************************************************************/
+/************************************************************************************************************************************************/
 const searchForm = document.querySelector('#search-form');
 const input = document.querySelector('.search-form__input');
 const cardsFilm = document.querySelector('.section-films');
