@@ -1,38 +1,40 @@
-import './info_functions';
-import './api_films_database';
+/************************************************************************************************************************************************/
+import * as functionsProject from './info_functions';
+import * as localStorage from './local_storage';
 
-/* const modal = document.querySelector('[data-modal]');
-const openModalBtn = document.querySelector('[data-modal-open]');
-const closeModalBtn = document.querySelector('[data-modal-close]'); */
+/************************************************************************************************************************************************/
+const IMG_URL = 'https://image.tmdb.org/t/p/w500/';
+const modalFilmCard = document.querySelector('.modal-film');
+/************************************************************************************************************************************************/
+let idFilm = null;
 
-function toggleModal(event) {
-  if (event.target === openModalBtn) {
-    modal.classList.toggle('hidden');
-  }
+/************************************************************************************************************************************************/
+function openModal() {
+  functionsProject.showEl(modalFilmCard);
+}
+function closeModal() {
+  functionsProject.hideEl(modalFilmCard);
+  window.removeEventListener('Click', widowEvent);
+}
+function addToWatched() {
+  localStorage.addToWatched(idFilm);
+  console.log(`dodano film do obejrzanych o id ${idFilm}`);
+  //'Dodano Film do Obejrzanych'
 }
 
-
-//openModalBtn.addEventListener('click', toggleModal);
-
-/* openModalBtn.addEventListener('click', toggleModal); */
-
-
-function closeModal(event) {
-  if (event.key === 'Escape') {
-    hideEl(document.querySelector('modal'));
+function addToQueued() {
+  localStorage.addToQueue(idFilm);
+  console.log(`dodano film do kolejki o id ${idFilm}`);
+  //'Dodano Film do  kolejki'
+}
+function widowEvent(eve) {
+  console.log(eve.target);
+  if (eve.target == modalFilmCard) {
+    closeModal();
   }
 }
-
-function closeModalClick(event) {
-  if (event.target === closeModalBtn) {
-    hideEl(document.querySelector('modal'));
-  }
-}
-
-/* document.addEventListener('keydown', closeModal);
-document.addEventListener('click', closeModalClick); */
-
-function createModalContent(filmData) {
+/************************************************************************************************************************************************/
+export function createModalContent(filmData) {
   const modalContent = `
   <h1 class="modal_film_open">${filmData.title}</h1>
   <div class="modal-film__container">
@@ -43,7 +45,7 @@ function createModalContent(filmData) {
       </svg> -->
     </button>
     <div class="modal-film__img-frame">
-      <img class="modal-film__img" src="${IMG_URL}${filmData.poster_path}" alt="" />
+      <img class="modal-film__img" src="https://image.tmdb.org/t/p/w500/${filmData.poster_path}" alt="" />
     </div>
     <div class="modal-film__card">
       <h2 class="modal-film__title">${filmData.title}</h2>
@@ -75,29 +77,17 @@ function createModalContent(filmData) {
     </div>
   </div>
     `;
-  const modalFilmCard = document.querySelector('.modal_film_open');
+
   modalFilmCard.innerHTML = modalContent;
-}
+  const addToQueueBtn = document.querySelector('#add__queue-btn');
+  const addToWatchedBtn = document.querySelector('#add__watched-btn');
+  const exitBtn = document.querySelector('[data-modal-close]');
 
-/* function addToWatched(event) {
-  if (!getWatchedMovie.includes(movieID)) {
-    getWatchedMovie.push(movieID);
-    showSuccess;
-  } else {
-    showInfo;
-  }
-  addToWatchedBtn.addEventListener('click', addToWatched);
-}
-
-function addToQueued(event) {
-  if (!getQueueMovie.includes(movieID)) {
-    getQueueMovie.push(movieID);
-    showSuccess;
-  } else {
-    showInfo;
-  }
   addToQueueBtn.addEventListener('click', addToQueued);
+  addToWatchedBtn.addEventListener('click', addToWatched);
+  exitBtn.addEventListener('click', closeModal);
+  idFilm = filmData.id;
+  openModal();
+  window.addEventListener('click', widowEvent);
 }
- */
-
-export { toggleModal, closeModal, closeModalClick, createModalContent };
+/************************************************************************************************************************************************/
