@@ -12,10 +12,12 @@ let idFilm = null;
 function openModal() {
   functionsProject.showEl(modalFilmCard);
   window.addEventListener('click', widowEvent);
+  window.addEventListener('keydown', keyListener);
 }
 function closeModal() {
   functionsProject.hideEl(modalFilmCard);
   window.removeEventListener('Click', widowEvent);
+  window.removeEventListener('keydown', keyListener);
 }
 function addToWatched() {
   localStorage.addToWatched(idFilm);
@@ -36,19 +38,11 @@ function widowEvent(eve) {
   }
 }
 
-function closeModalEsc(eve) {
+function keyListener(eve) {
   if (eve.key === 'Escape') {
-    modalFilmCard.classList.add('hidden');
+    closeModal();
   }
 }
-document.addEventListener('keydown', closeModalEsc);
-
-window.addEventListener('click', eve => {
-  if (eve.target.classList.contains('backdrop')) {
-    modalFilmCard.classList.add('hidden');
-  }
-});
-
 /************************************************************************************************************************************************/
 export function createModalContent(filmData) {
   const modalContent = `
