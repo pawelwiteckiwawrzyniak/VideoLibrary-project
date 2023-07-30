@@ -1,13 +1,12 @@
-
 const gallery = document.querySelector('.section-films');
 const IMG_URL = 'https://image.tmdb.org/t/p/w500/';
 
 const gallery = document.querySelector('.section-films__list');
 
-
 function createFilmCards(films) {
+  console.log('aa');
   const markupImages = films.results
-    .map(     
+    .map(
       film => `
       <li><a href="" data-id="${film.id}">
       <div class="film-card">
