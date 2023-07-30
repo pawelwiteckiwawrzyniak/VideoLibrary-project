@@ -37,20 +37,21 @@
   //   }
 
   &__students {
-    background: linear-gradient(45deg, #69c6e2, #81dfcf);
-    color: white;
-    border: none;
-    padding: 10px 20px;
+    color: get-color(brand_color-seventh);
     text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 8px;
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration: underline;
+    @include mq(tablet) {
+      font-size: 16px;
+    }
   }
 
   &__students:focus,
   &__sudents:hover {
     cursor: pointer;
-    background: linear-gradient(45deg, #81dfcf, #69c6e2);
   }
 }
