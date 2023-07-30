@@ -91,6 +91,8 @@ export function createModalContent(filmData) {
   const addToWatchedBtn = document.querySelector('#add__watched-btn');
   const exitBtn = document.querySelector('[data-modal-close]');
 
+  localStorage.checkLocalStorage();
+
   addToQueueBtn.addEventListener('click', addToQueued);
   addToWatchedBtn.addEventListener('click', addToWatched);
   exitBtn.addEventListener('click', closeModal);
