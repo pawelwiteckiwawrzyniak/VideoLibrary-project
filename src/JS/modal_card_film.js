@@ -4,7 +4,7 @@ import * as localStorage from './local_storage';
 
 /************************************************************************************************************************************************/
 
-const modalFilmCard = document.querySelector('.modal-film');
+const modalFilmCard = document.querySelector('.backdrop');
 /************************************************************************************************************************************************/
 let idFilm = null;
 
@@ -30,14 +30,15 @@ function addToQueued() {
   console.log(`dodano film do kolejki o id ${idFilm}`);
   //'Dodano Film do  kolejki'
 }
+
 function widowEvent(eve) {
   console.log(eve.target);
   if (eve.target == modalFilmCard) {
     closeModal();
   }
 }
+
 function keyListener(eve) {
-  console.log('klucz');
   if (eve.key === 'Escape') {
     closeModal();
   }
@@ -45,8 +46,7 @@ function keyListener(eve) {
 /************************************************************************************************************************************************/
 export function createModalContent(filmData) {
   const modalContent = `
-  <h1 class="modal_film_open">${filmData.title}</h1>
-  <div class="modal-film__container">
+  <div class="modal-film__container modal-film">
     <button type="button" class="modal-film__button" data-modal-close>
       X
       <!-- <svg class="modal-film__close-icon">
