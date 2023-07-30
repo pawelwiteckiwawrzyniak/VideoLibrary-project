@@ -35,4 +35,22 @@
   //     height: 12.88px;
   //     color: #ff6b08;
   //   }
+
+  &__students {
+    background: linear-gradient(45deg, #69c6e2, #81dfcf);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 8px;
+  }
+
+  &__students:focus,
+  &__sudents:hover {
+    cursor: pointer;
+    background: linear-gradient(45deg, #81dfcf, #69c6e2);
+  }
 }

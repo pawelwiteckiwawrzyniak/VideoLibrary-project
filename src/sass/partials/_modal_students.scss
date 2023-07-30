@@ -25,11 +25,13 @@
     -moz-box-shadow: -1px 5px 13px 3px rgba(177, 181, 224, 1);
     box-shadow: -1px 5px 13px 3px rgba(177, 181, 224, 1);
     @include mq(phone) {
-      font-size: 16px;
+      font-size: 12px;
       width: 100px;
-      height: 140px;
+      height: 120px;
       margin: auto;
-      margin-top: 10px;
+      margin-top: 15px;
+      margin-bottom: 17px;
+      gap: 15px;
     }
     @include mq(tablet) {
       width: 110px;
@@ -61,7 +63,7 @@
     font-size: 18px;
     color: #b8860b;
     @include mq(phone) {
-      font-size: 16px;
+      font-size: 12px;
     }
     @include mq(desktop) {
       font-size: 20px;
@@ -73,7 +75,6 @@
       flex-wrap: wrap;
       align-items: center;
       width: 280px;
-      height: 940px;
       margin-top: 0px;
       margin-bottom: 0px;
     }
@@ -176,9 +177,11 @@
     }
   }
   &__close {
-    text-align: end;
-    padding-top: 10px;
-    font-size: 30px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 40px;
+
     &:hover {
       cursor: pointer;
     }
@@ -194,9 +197,9 @@
     border-radius: 4px;
 
     @include mq(phone) {
-      width: 320px;
-      height: 900px;
-      margin-top: 200px;
+      width: 300px;
+      height: 800px;
+      margin-top: 80px;
     }
     @include mq(tablet) {
       width: 700px;
