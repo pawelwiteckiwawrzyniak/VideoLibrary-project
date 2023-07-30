@@ -59,8 +59,7 @@ const handleClickQueued = () => {
   });
 };
 
-local.getLocalQueue();
-local.getLocalWatched();
+local.checkLocalStorage();
 
 watchedBtn.addEventListener('click', handleClickWatched);
 queueBtn.addEventListener('click', handleClickQueued);
