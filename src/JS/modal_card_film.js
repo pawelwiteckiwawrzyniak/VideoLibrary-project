@@ -43,6 +43,14 @@ function keyListener(eve) {
   }
 }
 /************************************************************************************************************************************************/
+export const genres = film => {
+  const arrayOfGenres = [];
+  for (const genre of film.genres) {
+    arrayOfGenres.push(genre.name);
+  }
+  return arrayOfGenres.join(', ');
+};
+
 export function createModalContent(filmData) {
   const modalContent = `
   <div class="modal-film__container modal-film">
@@ -53,7 +61,9 @@ export function createModalContent(filmData) {
       </svg> -->
     </button>
     <div class="modal-film__img-frame">
-      <img class="modal-film__img" src="https://image.tmdb.org/t/p/w500/${filmData.poster_path}" alt="" />
+      <img class="modal-film__img" src="https://image.tmdb.org/t/p/w500/${
+        filmData.poster_path
+      }" alt="" />
     </div>
     <div class="modal-film__card">
       <h2 class="modal-film__title">${filmData.title}</h2>
@@ -72,8 +82,10 @@ export function createModalContent(filmData) {
             <li class="modal-film__rate-content modal-film__wtf-two">${filmData.vote_count}</li>
           </div>
           <li class="modal-film__rate-content">${filmData.popularity}</li>
-          <li class="modal-film__rate-content modal-film__inner-title">${filmData.original_title}</li>
-          <li class="modal-film__rate-content">${filmData.genre}</li>
+          <li class="modal-film__rate-content modal-film__inner-title">${
+            filmData.original_title
+          }</li>
+          <li class="modal-film__rate-content">${genres(filmData)}</li>
         </ul>
       </div>
       <h3 class="modal-film__about">About</h3>

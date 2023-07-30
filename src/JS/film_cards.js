@@ -1,11 +1,10 @@
 /************************************************************************************************************************************************/
-const gallery = document.querySelector('.section-films__list');
+const gallery = document.querySelector('.section-films');
 /************************************************************************************************************************************************/
 export function createFilmCards(films) {
   const markupImages = films.results
     .map(
       film => `
-      <li class="film-card"><a  href="" data-id="${film.id}">
       <div class="film-card">
         <img class="film-card__img" src="https://image.tmdb.org/t/p/w500/${
           film.poster_path
@@ -20,8 +19,7 @@ export function createFilmCards(films) {
             </p>
         </div>
     </div>
-    </a>
-    </li>`,
+    </a>`,
     )
     .join(' ');
   gallery.innerHTML = markupImages;
