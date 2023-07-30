@@ -13,7 +13,7 @@ export function getLocalWatched() {
   const localWatchedMovies = localStorage.getItem('watchedMovies');
   watchedMovies = JSON.parse(localWatchedMovies);
 }
-/* funkcja potrzebna do pobrania wartości LocalStorage bo inaczej po zamknięciu strony będzie reset */
+
 export function getLocalQueue() {
   if (localStorage.getItem('queuedMovies') == undefined) {
     return;
@@ -21,6 +21,13 @@ export function getLocalQueue() {
   const localQueuedMovies = localStorage.getItem('queuedMovies');
   queuedMovies = JSON.parse(localQueuedMovies);
 }
+
+/* funkcja potrzebna do pobrania wartości LocalStorage bo inaczej po zamknięciu strony będzie reset */
+export function checkLocalStorage() {
+  getLocalWatched();
+  getLocalQueue();
+}
+
 /* dodaje id do "watched" do LocalStorage */
 export function addToWatched(id) {
   if (watchedMovies.includes(id)) {

@@ -1,6 +1,7 @@
 import './sass/main.scss';
 import * as local from './JS/local_storage';
 import { fetchMoviesByID } from './JS/api_films_database';
+import Notiflix from 'notiflix';
 
 const spinner = document.querySelector('.loader__div');
 spinner.classList.add('hidden');
@@ -35,7 +36,11 @@ const createFilmCards = film => {
 
 const handleClickWatched = () => {
   spinner.classList.remove('hidden');
-  gallery.innerHTML = [];
+  gallery.innerHTML = '';
+  if (localStorage.getItem('watchedMovies') == undefined) {
+    spinner.classList.add('hidden');
+    return Notiflix.Notify.info('Sorry! Your list is empty!');
+  }
   local.getWatchedMovies().map(index => {
     fetchMoviesByID(index)
       .then(film => {
@@ -48,7 +53,11 @@ const handleClickWatched = () => {
 
 const handleClickQueued = () => {
   spinner.classList.remove('hidden');
-  gallery.innerHTML = [];
+  gallery.innerHTML = '';
+  if (localStorage.getItem('queuedMovies') == undefined) {
+    spinner.classList.add('hidden');
+    return Notiflix.Notify.info('Sorry! Your list is empty!');
+  }
   local.getQueuedMovies().map(index => {
     fetchMoviesByID(index)
       .then(film => {
@@ -59,8 +68,7 @@ const handleClickQueued = () => {
   });
 };
 
-local.getLocalQueue();
-local.getLocalWatched();
+local.checkLocalStorage();
 
 watchedBtn.addEventListener('click', handleClickWatched);
 queueBtn.addEventListener('click', handleClickQueued);
