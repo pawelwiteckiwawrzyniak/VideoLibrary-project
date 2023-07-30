@@ -1,7 +1,7 @@
  /************************************************************************************************************************************************/
 import * as api from './JS/api_films_database';
-import * as filmsCard from './JS/film_cards';
-import * as functionsProject from './JS/info_functions';
+//import * as filmsCard from './JS/film_cards';
+//import * as functionsProject from './JS/info_functions';
 import * as modalCardFilm from './JS/modal_card_film';
  import './sass/main.scss';
 
