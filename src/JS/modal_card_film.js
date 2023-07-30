@@ -3,7 +3,6 @@ import * as functionsProject from './info_functions';
 import * as localStorage from './local_storage';
 
 /************************************************************************************************************************************************/
-const IMG_URL = 'https://image.tmdb.org/t/p/w500/';
 const modalFilmCard = document.querySelector('.modal-film');
 /************************************************************************************************************************************************/
 let idFilm = null;
