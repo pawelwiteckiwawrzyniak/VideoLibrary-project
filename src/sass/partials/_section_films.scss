@@ -21,6 +21,7 @@ img {
   &__img {
     width: 280px;
     height: 402px;
+    object-fit: contain;
   }
 
   &__info {

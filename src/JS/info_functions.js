@@ -8,13 +8,13 @@ Notiflix.Notify.init({
   fontFamily: '$secondary',
 });
 
-showError => Notiflix.Notify.failure('Error has occured. Please try again later');
+const showError = () => Notiflix.Notify.failure('Error has occured. Please try again later');
 
-showInfo => Notify.info('Already on the list!');
+const showInfo = () => Notiflix.Notify.info('Already on the list!');
 
-showSuccess => Notify.success('Successfully added to your collection');
+const showSuccess = () => Notify.success('Successfully added to your collection');
 
-showWarning => Notify.warning('Invalid data');
+const showWarning = () => Notify.warning('Invalid data');
 
 const hideEl = elem => {
   elem.classList.add('hidden');
