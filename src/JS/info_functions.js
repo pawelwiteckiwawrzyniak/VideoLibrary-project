@@ -1,4 +1,4 @@
-import Notiflix from 'notiflix';
+import Notiflix, { Notify } from 'notiflix';
 
 Notiflix.Notify.init({
   width: '360px',
@@ -16,6 +16,8 @@ const showSuccess = () => Notify.success('Successfully added to your collection'
 
 const showWarning = () => Notify.warning('Invalid data');
 
+const showDelete = () => Notiflix.Notify.info('Successfully deleted from your collection');
+
 const hideEl = elem => {
   elem.classList.add('hidden');
 };
@@ -26,4 +28,4 @@ const showEl = elem => {
 
 //użycie - hide/show(document.querySelector('element'))
 
-export { showError, showInfo, showSuccess, showWarning, hideEl, showEl };
+export { showDelete, showError, showInfo, showSuccess, showWarning, hideEl, showEl };
