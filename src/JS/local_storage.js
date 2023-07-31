@@ -35,6 +35,7 @@ export function addToWatched(id) {
   }
   watchedMovies.push(id);
   localStorage.setItem('watchedMovies', JSON.stringify(watchedMovies));
+  info.showSuccess();
 }
 /* dodaje id do "queue" do LocalStorage */
 export function addToQueue(id) {
@@ -43,6 +44,7 @@ export function addToQueue(id) {
   }
   queuedMovies.push(id);
   localStorage.setItem('queuedMovies', JSON.stringify(queuedMovies));
+  info.showSuccess();
 }
 /* usuwa id z LocalStorage */
 export function deleteFromWatched(id) {
@@ -50,6 +52,7 @@ export function deleteFromWatched(id) {
   if (movieToDelete != -1) {
     watchedMovies.splice(movieToDelete, 1);
     localStorage.setItem('watchedMovies', JSON.stringify(watchedMovies));
+    info.showDelete();
     return;
   }
   info.showWarning();
@@ -60,6 +63,7 @@ export function deleteFromQueue(id) {
   if (movieToDelete != -1) {
     queuedMovies.splice(movieToDelete, 1);
     localStorage.setItem('queuedMovies', JSON.stringify(queuedMovies));
+    info.showDelete();
     return;
   }
   info.showWarning();

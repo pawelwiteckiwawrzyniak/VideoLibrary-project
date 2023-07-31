@@ -11,7 +11,6 @@ spinner.classList.add('hidden');
 const gallery = document.querySelector('.section-films');
 const watchedBtn = document.querySelector('#watched-btn');
 const queueBtn = document.querySelector('#queue-btn');
-const library = document.querySelector('#library');
 
 const genres = film => {
   const arrayOfGenres = [];
@@ -86,7 +85,7 @@ async function openCardFilm(eve) {
   eve.preventDefault();
   try {
     const infoFilm = await api.fetchMoviesByID(eve.target.id);
-    modalCardFilm.createModalContent(infoFilm);
+    modalCardFilm.createModalContentLib(infoFilm);
   } catch (error) {
     console.log(error);
   }
