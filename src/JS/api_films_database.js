@@ -16,8 +16,9 @@ const fetchMovies = async (page = 1) => {
   if (data.length === 0) {
     throw new Error('No movie data available');
   }
-  /* console.log(data); */
-  return data;
+   
+   
+  return data.results.slice(0, 18);
 };
 
 const fetchMoviesByName = async (searchValue, page = 1) => {
@@ -33,7 +34,7 @@ const fetchMoviesByName = async (searchValue, page = 1) => {
     throw new Error('No cat data available');
   }
   /* console.log(data); */
-  return data;
+  return data.results.slice(0, 18);
 };
 // ---------------------- kategorie filmów --------------------------------------------
 const fetchGenres = async () => {
@@ -63,6 +64,7 @@ const fetchMoviesByID = async id => {
     throw new Error('No movie data available');
   }
   /* console.log(data); */
+ 
   return data;
 };
 

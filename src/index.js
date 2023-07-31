@@ -52,6 +52,7 @@ export const genres = film => {
   for (const genre of film.genres) {
     arrayOfGenres.push(genre.name);
   }
+  
   return arrayOfGenres.join(', ');
 };
 
@@ -60,7 +61,7 @@ async function searchFilms(eve) {
   try {
     const popularFilms = await api.fetchMoviesByName(input.value, 1);
     console.log(popularFilms);
-    const movies = popularFilms.results;
+    const movies = popularFilms;
     console.log(movies);
     cardsFilm.innerHTML = '';
     ids(movies).map(index => {
@@ -79,7 +80,7 @@ async function searchFilms(eve) {
 async function loadPopularFilms(page) {
   try {
     const popularFilms = await api.fetchMovies(page);
-    const movies = popularFilms.results;
+    const movies = popularFilms;
     ids(movies).map(index => {
       api
         .fetchMoviesByID(index)
