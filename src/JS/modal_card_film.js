@@ -1,6 +1,7 @@
 /************************************************************************************************************************************************/
 import * as functionsProject from './info_functions';
 import * as localStorage from './local_storage';
+import * as api from './api_films_database';
 
 /************************************************************************************************************************************************/
 
@@ -52,6 +53,11 @@ export const genres = film => {
 };
 
 export function createModalContent(filmData) {
+  let imgSRC = api.IMG_URL + filmData.poster_path;
+  if (filmData.poster_path == null || filmData.poster_path == undefined) {
+    imgSRC = 'https://www.freeiconspng.com/uploads/no-image-icon-6.png';
+  }
+
   const modalContent = `
   <div class="modal-film__container modal-film">
     <button type="button" class="modal-film__button" data-modal-close>
@@ -61,9 +67,7 @@ export function createModalContent(filmData) {
       </svg> -->
     </button>
     <div class="modal-film__img-frame">
-      <img class="modal-film__img" src="https://image.tmdb.org/t/p/w500/${
-        filmData.poster_path
-      }" alt="" />
+      <img class="modal-film__img" src="${imgSRC}" alt="" />
     </div>
     <div class="modal-film__card">
       <h2 class="modal-film__title">${filmData.title}</h2>
