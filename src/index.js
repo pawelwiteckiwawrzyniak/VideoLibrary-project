@@ -11,14 +11,14 @@ const searchForm = document.querySelector('#search-form');
 const input = document.querySelector('.search-form__input');
 const cardsFilm = document.querySelector('.section-films');
 //const studentsModal = document.querySelector('#studentsModal');
-// const spinner = document.querySelector('.loader__div');
+const spinner = document.querySelector('.loader__div');
 
 /************************************************************************************************************************************************/
 searchForm.addEventListener('submit', searchFilms);
 cardsFilm.addEventListener('click', openCardFilm);
 //studentsModal.addEventListener('click', openCardFilm);
 /************************************************************************************************************************************************/
-
+spinner.classList.add('hidden');
 const createFilmCards = film => {
   const markup = `
   <div class="film-card">
@@ -64,6 +64,7 @@ async function searchFilms(eve) {
     const movies = popularFilms;
     console.log(movies);
     cardsFilm.innerHTML = '';
+    spinner.classList.remove('hidden');
     ids(movies).map(index => {
       api
         .fetchMoviesByID(index)
@@ -75,10 +76,12 @@ async function searchFilms(eve) {
   } catch (error) {
     console.log(error);
   }
+  spinner.classList.add('hidden');
   input.value = '';
 }
 async function loadPopularFilms(page) {
   try {
+    spinner.classList.remove('hidden');
     const popularFilms = await api.fetchMovies(page);
     const movies = popularFilms;
     ids(movies).map(index => {
@@ -92,6 +95,7 @@ async function loadPopularFilms(page) {
   } catch (error) {
     console.log(error);
   }
+  spinner.classList.add('hidden');
 }
 
 async function openCardFilm(eve) {
