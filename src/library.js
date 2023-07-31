@@ -1,10 +1,10 @@
 import './sass/main.scss';
-import Notiflix from 'notiflix';
 import * as local from './JS/local_storage';
 import * as api from './JS/api_films_database';
 import * as filmsCard from './JS/film_cards';
 import * as modalCardFilm from './JS/modal_card_film';
 import * as studentsInfo from './JS/modal_footer';
+import * as info from './JS/info_functions';
 
 const spinner = document.querySelector('.loader__div');
 spinner.classList.add('hidden');
@@ -21,11 +21,16 @@ const genres = film => {
 };
 
 const createFilmCards = film => {
+  let imgSRC = api.IMG_URL + film.poster_path;
+  if (film.poster_path == null || film.poster_path == undefined) {
+    imgSRC = 'https://www.freeiconspng.com/uploads/no-image-icon-6.png';
+  }
+
   const markup = `
   <div class="film-card">
-    <img class="film-card__img" src="https://image.tmdb.org/t/p/w500/${film.poster_path}" alt="${
-    film.overview
-  }" title="${film.title}" ID="${film.id}" loading="lazy"/>
+    <img class="film-card__img" src="${imgSRC}" alt=" Poster of a movie titled '${
+    film.title
+  }'" title="${film.title}" ID="${film.id}" loading="lazy"/>
 
     <div class="film-card__info">
         <p class="film-card__info--title">
@@ -45,7 +50,7 @@ const handleClickWatched = () => {
   gallery.innerHTML = '';
   if (localStorage.getItem('watchedMovies') == undefined) {
     spinner.classList.add('hidden');
-    return Notiflix.Notify.info('Sorry! Your list is empty!');
+    return;
   }
   local.getWatchedMovies().map(index => {
     api
@@ -63,7 +68,7 @@ const handleClickQueued = () => {
   gallery.innerHTML = '';
   if (localStorage.getItem('queuedMovies') == undefined) {
     spinner.classList.add('hidden');
-    return Notiflix.Notify.info('Sorry! Your list is empty!');
+    return;
   }
   local.getQueuedMovies().map(index => {
     api
@@ -80,29 +85,44 @@ async function openCardFilm(eve) {
   eve.preventDefault();
   try {
     const infoFilm = await api.fetchMoviesByID(eve.target.id);
-    modalCardFilm.createModalContent(infoFilm);
+    modalCardFilm.createModalContentLib(infoFilm);
   } catch (error) {
     console.log(error);
   }
+}
+
+function styleButtonBefore() {
+  watchedBtn.style.background = '#ff6b01';
+  watchedBtn.style.border = '1px solid #ff6b01';
+  watchedBtn.style.boxShadow = ' 0px 8px 43px 0px rgba(255, 107, 1, 0.6)';
+  watchedBtn.style.transform = 'scale(1.25)';
+  watchedBtn.style.transitionDuration = '250ms';
+}
+
+function styleButtonAfter() {
+  watchedBtn.style.transform = 'scale(1)';
+  watchedBtn.style.background = 'transparent';
+  watchedBtn.style.borderRadius = '5px';
+  watchedBtn.style.border = '1px solid white';
+  watchedBtn.style.color = 'get-color(brand_color-first)';
+}
+
+function defaultList() {
+  styleButtonBefore();
+  handleClickWatched();
 }
 
 local.checkLocalStorage();
 
 gallery.addEventListener('click', openCardFilm);
 
-watchedBtn.addEventListener('click', handleClickWatched);
-queueBtn.addEventListener('click', handleClickQueued);
+defaultList();
 
-/* `<div class="film-card">
-        <img class="film-card__img" src="https://image.tmdb.org/t/p/w500${
-          film.poster_path
-        }" alt="poster of ${film.title}" loading="lazy"/>
-        <div class="film-card__info">
-            <p class="film-card__info--title">
-            ${film.title}
-            </p>
-            <p class="film-card__info--subtitle">
-            ${genres(film)} | ${film.release_date.split('-')[0]}
-            </p>
-        </div>
-    </div>` */
+watchedBtn.addEventListener('click', () => {
+  styleButtonBefore();
+  handleClickWatched();
+});
+queueBtn.addEventListener('click', () => {
+  styleButtonAfter();
+  handleClickQueued();
+});

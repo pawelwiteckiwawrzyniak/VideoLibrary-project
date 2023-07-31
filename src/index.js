@@ -20,11 +20,16 @@ cardsFilm.addEventListener('click', openCardFilm);
 /************************************************************************************************************************************************/
 spinner.classList.add('hidden');
 const createFilmCards = film => {
+  let imgSRC = api.IMG_URL + film.poster_path;
+  if (film.poster_path == null || film.poster_path == undefined) {
+    imgSRC = 'https://www.freeiconspng.com/uploads/no-image-icon-6.png';
+  }
+
   const markup = `
   <div class="film-card">
-    <img class="film-card__img" src="https://image.tmdb.org/t/p/w500/${film.poster_path}" alt="${
-    film.overview
-  }" title="${film.title}" ID="${film.id}" loading="lazy"/>
+    <img class="film-card__img" src="${imgSRC}" alt=" Poster of a movie titled '${
+    film.title
+  }'" title="${film.title}" ID="${film.id}" loading="lazy"/>
 
     <div class="film-card__info">
         <p class="film-card__info--title">
@@ -60,9 +65,11 @@ async function searchFilms(eve) {
   eve.preventDefault();
   try {
     const popularFilms = await api.fetchMoviesByName(input.value, 1);
-    console.log(popularFilms);
+
+    
     const movies = popularFilms;
-    console.log(movies);
+    
+   
     cardsFilm.innerHTML = '';
     spinner.classList.remove('hidden');
     ids(movies).map(index => {

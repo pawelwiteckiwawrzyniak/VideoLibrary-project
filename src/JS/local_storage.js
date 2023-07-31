@@ -1,5 +1,5 @@
 /************************************************************************************************************************************************/
-import Notiflix from 'notiflix';
+import * as info from './info_functions';
 
 /************************************************************************************************************************************************/
 let watchedMovies = [];
@@ -31,18 +31,20 @@ export function checkLocalStorage() {
 /* dodaje id do "watched" do LocalStorage */
 export function addToWatched(id) {
   if (watchedMovies.includes(id)) {
-    return Notiflix.Notify.info("This film is already on your 'Watched' list!");
+    return info.showInfo();
   }
   watchedMovies.push(id);
   localStorage.setItem('watchedMovies', JSON.stringify(watchedMovies));
+  info.showSuccess();
 }
 /* dodaje id do "queue" do LocalStorage */
 export function addToQueue(id) {
   if (queuedMovies.includes(id)) {
-    return Notiflix.Notify.info("This film is already on your 'Queue' list!");
+    return info.showInfo();
   }
   queuedMovies.push(id);
   localStorage.setItem('queuedMovies', JSON.stringify(queuedMovies));
+  info.showSuccess();
 }
 /* usuwa id z LocalStorage */
 export function deleteFromWatched(id) {
@@ -50,9 +52,10 @@ export function deleteFromWatched(id) {
   if (movieToDelete != -1) {
     watchedMovies.splice(movieToDelete, 1);
     localStorage.setItem('watchedMovies', JSON.stringify(watchedMovies));
+    info.showDelete();
     return;
   }
-  Notiflix.Notify.failure("Sorry! This movie doesn't exist on your 'Watched' list!");
+  info.showWarning();
 }
 /* usuwa id z LocalStorage */
 export function deleteFromQueue(id) {
@@ -60,9 +63,10 @@ export function deleteFromQueue(id) {
   if (movieToDelete != -1) {
     queuedMovies.splice(movieToDelete, 1);
     localStorage.setItem('queuedMovies', JSON.stringify(queuedMovies));
+    info.showDelete();
     return;
   }
-  Notiflix.Notify.failure("Sorry! This movie doesn't exist on your 'Queue' list!");
+  info.showWarning();
 }
 /* pobiera id "watched" filmów z LocalStorage */
 export function getWatchedMovies() {
