@@ -11,14 +11,14 @@ const searchForm = document.querySelector('#search-form');
 const input = document.querySelector('.search-form__input');
 const cardsFilm = document.querySelector('.section-films');
 //const studentsModal = document.querySelector('#studentsModal');
-// const spinner = document.querySelector('.loader__div');
+const spinner = document.querySelector('.loader__div');
 
 /************************************************************************************************************************************************/
 searchForm.addEventListener('submit', searchFilms);
 cardsFilm.addEventListener('click', openCardFilm);
 //studentsModal.addEventListener('click', openCardFilm);
 /************************************************************************************************************************************************/
-
+spinner.classList.add('hidden');
 const createFilmCards = film => {
   let imgSRC = api.IMG_URL + film.poster_path;
   if (film.poster_path == null || film.poster_path == undefined) {
@@ -57,6 +57,7 @@ export const genres = film => {
   for (const genre of film.genres) {
     arrayOfGenres.push(genre.name);
   }
+  
   return arrayOfGenres.join(', ');
 };
 
@@ -64,8 +65,13 @@ async function searchFilms(eve) {
   eve.preventDefault();
   try {
     const popularFilms = await api.fetchMoviesByName(input.value, 1);
-    const movies = popularFilms.results;
+
+    
+    const movies = popularFilms;
+    
+   
     cardsFilm.innerHTML = '';
+    spinner.classList.remove('hidden');
     ids(movies).map(index => {
       api
         .fetchMoviesByID(index)
@@ -77,12 +83,14 @@ async function searchFilms(eve) {
   } catch (error) {
     console.log(error);
   }
+  spinner.classList.add('hidden');
   input.value = '';
 }
 async function loadPopularFilms(page) {
   try {
+    spinner.classList.remove('hidden');
     const popularFilms = await api.fetchMovies(page);
-    const movies = popularFilms.results;
+    const movies = popularFilms;
     ids(movies).map(index => {
       api
         .fetchMoviesByID(index)
@@ -94,6 +102,7 @@ async function loadPopularFilms(page) {
   } catch (error) {
     console.log(error);
   }
+  spinner.classList.add('hidden');
 }
 
 async function openCardFilm(eve) {
