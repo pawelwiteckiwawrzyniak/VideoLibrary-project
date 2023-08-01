@@ -11,6 +11,7 @@ spinner.classList.add('hidden');
 const gallery = document.querySelector('.section-films');
 const watchedBtn = document.querySelector('#watched-btn');
 const queueBtn = document.querySelector('#queue-btn');
+const libBtn = document.querySelector('.btn__main');
 
 const genres = film => {
   const arrayOfGenres = [];
@@ -97,6 +98,11 @@ function styleButtonBefore() {
   watchedBtn.style.boxShadow = ' 0px 8px 43px 0px rgba(255, 107, 1, 0.6)';
   watchedBtn.style.transform = 'scale(1.25)';
   watchedBtn.style.transitionDuration = '250ms';
+  queueBtn.style.transform = 'scale(1)';
+  queueBtn.style.background = 'transparent';
+  queueBtn.style.borderRadius = '5px';
+  queueBtn.style.border = '1px solid white';
+  queueBtn.style.color = 'get-color(brand_color-first)';
 }
 
 function styleButtonAfter() {
@@ -105,6 +111,11 @@ function styleButtonAfter() {
   watchedBtn.style.borderRadius = '5px';
   watchedBtn.style.border = '1px solid white';
   watchedBtn.style.color = 'get-color(brand_color-first)';
+  queueBtn.style.background = '#ff6b01';
+  queueBtn.style.border = '1px solid #ff6b01';
+  queueBtn.style.boxShadow = ' 0px 8px 43px 0px rgba(255, 107, 1, 0.6)';
+  queueBtn.style.transform = 'scale(1.25)';
+  queueBtn.style.transitionDuration = '250ms';
 }
 
 function defaultList() {

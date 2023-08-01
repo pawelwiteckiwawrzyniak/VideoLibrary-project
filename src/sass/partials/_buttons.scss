@@ -24,7 +24,7 @@
     &:hover,
     &:active,
     &:focus {
-      background: #ff6b01;
+      background: get-color(brand_color-third);
       border: 1px solid #ff6b01;
       box-shadow: 0px 8px 43px 0px rgba(255, 107, 1, 0.6);
       cursor: pointer;
@@ -74,4 +74,13 @@
       transition-timing-function: ease-out;
     }
   }
+}
+
+.active {
+  background: get-color(brand_color-third);
+  border: 1px solid get-color(brand_color-third);
+  box-shadow: 0px 8px 43px 0px rgba(255, 107, 1, 0.6);
+  cursor: pointer;
+  transform: scale(1.1);
+  transition-duration: 250ms;
 }
