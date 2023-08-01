@@ -53,6 +53,7 @@ export function deleteFromWatched(id) {
     watchedMovies.splice(movieToDelete, 1);
     localStorage.setItem('watchedMovies', JSON.stringify(watchedMovies));
     info.showDelete();
+    window.location.reload();
     return;
   }
   info.showWarning();
@@ -64,6 +65,7 @@ export function deleteFromQueue(id) {
     queuedMovies.splice(movieToDelete, 1);
     localStorage.setItem('queuedMovies', JSON.stringify(queuedMovies));
     info.showDelete();
+    window.location.reload();
     return;
   }
   info.showWarning();

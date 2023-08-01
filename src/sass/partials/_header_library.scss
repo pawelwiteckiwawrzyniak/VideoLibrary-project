@@ -128,10 +128,10 @@
     }
   }
 
-  &__button {
+  &__buttons {
     display: flex;
     justify-content: center;
-    gap: 20px;
+
     @media (min-width: 768px) {
       gap: 32px;
     }
