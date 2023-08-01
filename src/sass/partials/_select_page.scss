@@ -6,11 +6,18 @@
   max-height: 40px;
   max-width: 280px;
   margin: 0 auto;
+  margin-bottom: 40px;
 
   @include mq(tablet) {
     min-width: 374px;
+    margin-bottom: 60px;
   }
 
+  &__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   & li,
   svg {
     width: 40px;
@@ -18,9 +25,20 @@
     padding: 10px;
   }
 
-  &__arrow {
+  &__arrow--left {
     background-color: get-color(brand_color-fifth);
     border-radius: 5px;
+    position: absolute;
+    margin-right: 400px;
+    margin-bottom: 60px;
+  }
+
+  &__arrow--right {
+    background-color: get-color(brand_color-fifth);
+    border-radius: 5px;
+    position: absolute;
+    margin-left: 400px;
+    margin-bottom: 60px;
   }
 
   &__numbers,
@@ -59,4 +77,8 @@
       display: flex;
     }
   }
+}
+
+#page__selected {
+  background-color: get-color(brand_color-third);
 }

@@ -5,6 +5,8 @@ const API_URL = BASE_URL + '/trending/movie/day' + MY_KEY;
 const searchURL = BASE_URL + '/search/movie' + MY_KEY;
 const GENRE_URL = BASE_URL + '/genre/movie/list' + MY_KEY;
 
+let totalPage = 500;
+
 const fetchMovies = async (page = 1) => {
   const url = `${API_URL}&page=${page}`;
   const response = await fetch(url);
@@ -16,8 +18,12 @@ const fetchMovies = async (page = 1) => {
   if (data.length === 0) {
     throw new Error('No movie data available');
   }
-   
-   
+  if (data.total_pages > 500) {
+    totalPage = 500;
+  } else {
+    totalPage = data.total_pages;
+    console.log(totalPage);
+  }
   return data.results.slice(0, 18);
 };
 
@@ -34,6 +40,12 @@ const fetchMoviesByName = async (searchValue, page = 1) => {
     throw new Error('No cat data available');
   }
   /* console.log(data); */
+  if (data.total_pages > 500) {
+    totalPage = 500;
+  } else {
+    totalPage = data.total_pages;
+    console.log(totalPage);
+  }
   return data.results.slice(0, 18);
 };
 // ---------------------- kategorie filmów --------------------------------------------
@@ -64,8 +76,8 @@ const fetchMoviesByID = async id => {
     throw new Error('No movie data available');
   }
   /* console.log(data); */
- 
+
   return data;
 };
 
-export { fetchMovies, fetchMoviesByName, fetchGenres, fetchMoviesByID };
+export { fetchMovies, fetchMoviesByName, fetchGenres, fetchMoviesByID, fetchTotalPage, totalPage };
