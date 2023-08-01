@@ -1,11 +1,12 @@
 import Notiflix, { Notify } from 'notiflix';
 
 Notiflix.Notify.init({
-  width: '360px',
-  borderRadius: '1px',
-  timeout: '4000',
   showOnlyTheLastOne: 'true',
   fontFamily: '$secondary',
+  position: 'center-top',
+  clickToClose: 'true',
+  closeButton: 'true',
+  timeout: '3000',
 });
 
 const showError = () => Notiflix.Notify.failure('Error has occured. Please try again later');

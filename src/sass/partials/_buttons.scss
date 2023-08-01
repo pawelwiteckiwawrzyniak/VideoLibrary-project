@@ -1,70 +1,76 @@
 .btn {
   &__main {
-    flex-shrink: 0;
     background: transparent;
-    border-radius: 5px;
     border: 1px solid get-color(brand_color-first);
+    border-radius: 5px;
     color: get-color(brand_color-first);
-    @include mq(phone) {
-      width: 129.532px;
-      height: 44px;
-      margin-right: 19.94px;
-    }
-    @include mq(tablet) {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.33;
+    width: 130px;
+    height: 44px;
+    display: block;
+
+    @media (min-width: 768px) {
       width: 152px;
       height: 44px;
-      margin-right: 32px;
     }
-    @include mq(desktop) {
+    @media (min-width: 1280) {
       width: 147px;
       height: 42px;
-      margin-right: 16px;
     }
-    &:focus,
-    &:hover {
+
+    &:hover,
+    &:active,
+    &:focus {
       background: #ff6b01;
       border: 1px solid #ff6b01;
       box-shadow: 0px 8px 43px 0px rgba(255, 107, 1, 0.6);
       cursor: pointer;
-      transform: scale(1.25);
+      transform: scale(1.1);
       transition-duration: 250ms;
-      -webkit-transition-duration: 250ms;
-      //   transition-timing-function: ease-out;
     }
   }
 
   &__modal {
-    flex-shrink: 0;
-    border-radius: 5px;
-    border: 1px solid get-color(brand_color-second);
-    color: get-color(brand_color-second);
     background: transparent;
-    @include mq(phone) {
-      width: 110px;
-      height: 44px;
-      margin-right: 20px;
-    }
-    @include mq(tablet) {
-      width: 125.032px;
-      height: 44px;
-      margin-right: 14.94px;
-    }
-    @include mq(desktop) {
-      width: 136px;
+    border: 1px solid get-color(brand_color-second);
+    border-radius: 5px;
+    color: get-color(brand_color-second);
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.33;
+    width: 110px;
+    height: 44px;
+
+    @media (min-width: 768px) {
+      width: 125px;
       height: 44px;
       margin-right: 15px;
     }
+    @media (min-width: 1280) {
+      width: 136;
+      height: 44px;
+    }
 
-    &:focus,
-    &:hover {
+    &:focus {
+      background: transparent;
+      border: 1px solid get-color(brand_color-third);
       border-radius: 5px;
-      border: 1px solid #ff6b01;
-      background: #ff6b01;
+      color: get-color(brand_color-third);
+    }
+
+    &:hover,
+    &:active {
+      border-radius: 5px;
+      border: 1px solid get-color(brand_color-third);
+      background: get-color(brand_color-third);
       color: get-color(brand_color-first);
       cursor: pointer;
-      transform: scale(1.25);
+      transform: scale(1.1);
       transition-duration: 250ms;
-      -webkit-transition-duration: 250ms;
       transition-timing-function: ease-out;
     }
   }
