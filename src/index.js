@@ -4,6 +4,7 @@ import * as filmsCard from './JS/film_cards';
 import * as functionsProject from './JS/info_functions';
 import * as modalCardFilm from './JS/modal_card_film';
 import * as studentsInfo from './JS/modal_footer';
+import { substractingArrow, addingArrow, selectPages, createPageHome } from './JS/select_page';
 import './sass/main.scss';
 
 /************************************************************************************************************************************************/
@@ -12,6 +13,11 @@ const input = document.querySelector('.search-form__input');
 const cardsFilm = document.querySelector('.section-films');
 //const studentsModal = document.querySelector('#studentsModal');
 const spinner = document.querySelector('.loader__div');
+
+let plusArrow = document.querySelector('#plus');
+let minusArrow = document.querySelector('#minus');
+let boxPages = document.querySelector('.page');
+let searchMovie = "";
 
 /************************************************************************************************************************************************/
 searchForm.addEventListener('submit', searchFilms);
@@ -57,19 +63,21 @@ export const genres = film => {
   for (const genre of film.genres) {
     arrayOfGenres.push(genre.name);
   }
-  
+
   return arrayOfGenres.join(', ');
 };
 
-async function searchFilms(eve) {
+function searchFilms(eve) {
   eve.preventDefault();
+  searchFilms1();
+  searchMovie = input.value;
+}
+async function searchFilms1() {
   try {
     const popularFilms = await api.fetchMoviesByName(input.value, 1);
-
-    
+    searchMovie = input.value;
     const movies = popularFilms;
-    
-   
+
     cardsFilm.innerHTML = '';
     spinner.classList.remove('hidden');
     ids(movies).map(index => {
@@ -83,13 +91,36 @@ async function searchFilms(eve) {
   } catch (error) {
     console.log(error);
   }
+  createPageHome(api.totalPage, 1);
   spinner.classList.add('hidden');
   input.value = '';
+}
+
+async function searchFilms2(filmName,page) {
+  try {
+    const popularFilms = await api.fetchMoviesByName(filmName, page);
+    const movies = popularFilms;
+    cardsFilm.innerHTML = '';
+    spinner.classList.remove('hidden');
+    ids(movies).map(index => {
+      api
+        .fetchMoviesByID(index)
+        .then(film => {
+          createFilmCards(film);
+        })
+        .catch(error => console.error(error));
+    });
+  } catch (error) {
+    console.log(error);
+  }
+  createPageHome(api.totalPage, page);
+  spinner.classList.add('hidden');
 }
 async function loadPopularFilms(page) {
   try {
     spinner.classList.remove('hidden');
     const popularFilms = await api.fetchMovies(page);
+    // const popularFilms = await api.fetchMoviesByName(searchMovie, 1);
     const movies = popularFilms;
     ids(movies).map(index => {
       api
@@ -117,3 +148,9 @@ async function openCardFilm(eve) {
 
 /************************************************************************************************************************************************/
 loadPopularFilms();
+
+createPageHome(api.totalPage, 1);
+plusArrow.addEventListener('click', addingArrow);
+boxPages.addEventListener('click', selectPages);
+minusArrow.addEventListener('click', substractingArrow);
+export { loadPopularFilms, searchMovie, searchFilms2 };
