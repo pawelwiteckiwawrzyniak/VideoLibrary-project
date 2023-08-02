@@ -3,7 +3,7 @@ const cardsFilm = document.querySelector('.section-films');
 const paginacjaHome = document.querySelector('.page');
 let plusArrow = document.querySelector('#plus');
 let minusArrow = document.querySelector('#minus');
-import { loadPopularFilms, searchMovie } from '../index';
+import { loadPopularFilms, searchMovie, searchFilms2 } from '../index';
 import { totalPage } from './api_films_database';
 // ********************************************************************************************************************************************
 function createPage(numberOfPages, selectPage) {
@@ -78,6 +78,7 @@ function selectPages(event) {
   const selectedPage = event.target.textContent;
   cardsFilm.innerHTML = '';
   arrowPage = parseInt(selectedPage);
+ 
   if (searchMovie === '') {
     createPageHome(totalPage, arrowPage);
     loadPopularFilms(arrowPage);
@@ -93,16 +94,28 @@ function substractingArrow() {
   }
   arrowPage -= 1;
   cardsFilm.innerHTML = '';
-  createPageHome(totalPage, arrowPage);
-  loadPopularFilms(arrowPage);
+  if (searchMovie === '') {
+    createPageHome(totalPage, arrowPage);
+    loadPopularFilms(arrowPage);
+  } else {
+    createPageHome(totalPage, arrowPage);
+    searchFilms2(searchMovie, arrowPage);
+    //searchMovie(arrowPage);
+  }
 }
 function addingArrow() {
-  if (arrowPage === 500) {
+  if (arrowPage === 500 || arrowPage === totalPage) {
     return;
   }
   arrowPage += 1;
   cardsFilm.innerHTML = '';
-  createPageHome(totalPage, arrowPage);
-  loadPopularFilms(arrowPage);
+  if (searchMovie === '') {
+    createPageHome(totalPage, arrowPage);
+    loadPopularFilms(arrowPage);
+  } else {
+    createPageHome(totalPage, arrowPage);
+    searchFilms2(searchMovie, arrowPage);
+    //searchMovie(arrowPage);
+  }
 }
 export { substractingArrow, addingArrow, selectPages, totalPage };

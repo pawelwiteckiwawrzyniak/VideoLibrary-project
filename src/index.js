@@ -17,7 +17,7 @@ const spinner = document.querySelector('.loader__div');
 let plusArrow = document.querySelector('#plus');
 let minusArrow = document.querySelector('#minus');
 let boxPages = document.querySelector('.page');
-let searchMovie;
+let searchMovie = "";
 
 /************************************************************************************************************************************************/
 searchForm.addEventListener('submit', searchFilms);
@@ -96,9 +96,9 @@ async function searchFilms1() {
   input.value = '';
 }
 
-async function searchFilms2(filmName) {
+async function searchFilms2(filmName,page) {
   try {
-    const popularFilms = await api.fetchMoviesByName(filmName, 1);
+    const popularFilms = await api.fetchMoviesByName(filmName, page);
     const movies = popularFilms;
     cardsFilm.innerHTML = '';
     spinner.classList.remove('hidden');
@@ -113,7 +113,7 @@ async function searchFilms2(filmName) {
   } catch (error) {
     console.log(error);
   }
-  createPageHome(api.totalPage, 1);
+  createPageHome(api.totalPage, page);
   spinner.classList.add('hidden');
 }
 async function loadPopularFilms(page) {
@@ -153,4 +153,4 @@ createPageHome(api.totalPage, 1);
 plusArrow.addEventListener('click', addingArrow);
 boxPages.addEventListener('click', selectPages);
 minusArrow.addEventListener('click', substractingArrow);
-export { loadPopularFilms, searchMovie };
+export { loadPopularFilms, searchMovie, searchFilms2 };
