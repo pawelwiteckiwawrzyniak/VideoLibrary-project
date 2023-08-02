@@ -5,6 +5,7 @@ let plusArrow = document.querySelector('#plus');
 let minusArrow = document.querySelector('#minus');
 import { loadPopularFilms, searchMovie, searchFilms2 } from '../index';
 import { totalPage } from './api_films_database';
+let stopNumber= 0;
 // ********************************************************************************************************************************************
 function createPage(numberOfPages, selectPage) {
   let data = [];
