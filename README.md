@@ -8,7 +8,7 @@
 - [General Info](#general-information)
 - [Technologies Used](#technologies-used)
 - [Project Responsibilities](#project-responsibilities)
-- [Screenshots](#scrrenshots)
+- [Screenshots](#screenshots)
 - [Setup](#setup)
 
 ## General Information
