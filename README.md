@@ -10,6 +10,7 @@
 - [Project Responsibilities](#project-responsibilities)
 - [Screenshots](#screenshots)
 - [Setup](#setup)
+- [Contributors](#contributors)
 
 ## General Information
 
@@ -51,3 +52,12 @@ To run this project, install it locally using npm:
 npm i
 npm run start
 ```
+
+# Contributors
+- [_adrianblazejczyk_](https://github.com/adrianblazejczyk) - team lead
+- [_pawelwiteckiwawrzyniak_](https://github.com/pawelwiteckiwawrzyniak) - developer
+- [_MonikaGellert_](https://github.com/MonikaGellert) - developer
+- [_mielnikmagdalena_](https://github.com/mielnikmagdalena) - developer
+- [_mikasaurus_](https://github.com/mikasaurus) - developer
+- [_tomaspalica_](https://github.com/tomaspalica) - developer
+- [_Bazky_](https://github.com/Bazky) - developer
